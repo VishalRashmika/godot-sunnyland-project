@@ -1,0 +1,86 @@
+[gd_scene load_steps=9 format=3 uid="uid://cqco21enwhf3h"]
+
+[ext_resource type="Texture2D" uid="uid://bbf7jof6d3uhg" path="res://Resources/Animated-Objects/Chest.png" id="1_4q6bn"]
+
+[sub_resource type="GDScript" id="GDScript_8brx0"]
+resource_name = "chest"
+script/source = "extends Area2D
+
+
+# Called when the node enters the scene tree for the first time.
+func _ready():
+	pass # Replace with function body.
+
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(delta):
+	pass
+
+var chest_active = true
+func _on_body_entered(body):
+	if body.name == \"Player\" and chest_active:
+		get_node(\"AnimatedSprite2D\").play(\"chest_anim\")
+		await get_tree().create_timer(0.2).timeout
+		chest_active = false
+		Globalgamescript.game_score += 10
+	#print(\"Diamond\")
+		var tween = get_tree().create_tween()
+		var tween1 = get_tree().create_tween()		
+		#tween.tween_property(self, \"position\", position - Vector2(0,25), 0.3)
+		#tween1.tween_property(self, \"modulate:a\", 0, 0.3)
+		
+		#tween.tween_callback(queue_free)   
+"
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_colb8"]
+size = Vector2(28, 19)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mrr32"]
+atlas = ExtResource("1_4q6bn")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_spnwv"]
+atlas = ExtResource("1_4q6bn")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dxfx7"]
+atlas = ExtResource("1_4q6bn")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_i4qkt"]
+atlas = ExtResource("1_4q6bn")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_4aat5"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mrr32")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_spnwv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dxfx7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_i4qkt")
+}],
+"loop": false,
+"name": &"chest_anim",
+"speed": 12.0
+}]
+
+[node name="chest" type="Area2D"]
+script = SubResource("GDScript_8brx0")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -0.5)
+shape = SubResource("RectangleShape2D_colb8")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(3, -8)
+sprite_frames = SubResource("SpriteFrames_4aat5")
+animation = &"chest_anim"
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

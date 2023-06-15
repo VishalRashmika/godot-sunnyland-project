@@ -1,0 +1,33 @@
+[gd_scene load_steps=3 format=3 uid="uid://bvo2sqv1h0jgw"]
+
+[sub_resource type="GDScript" id="GDScript_00l5e"]
+resource_name = "lvl1tolvl2"
+script/source = "extends Area2D
+
+
+# Called when the node enters the scene tree for the first time.
+func _ready():
+	pass # Replace with function body.
+
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(delta):
+	pass
+
+
+func _on_body_entered(body):
+	if body.name == \"Player\":
+		get_tree().change_scene_to_file(\"res://world.tscn\")
+"
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_nn5ht"]
+size = Vector2(24, 35)
+
+[node name="doorlvl1tolvl2" type="Area2D"]
+script = SubResource("GDScript_00l5e")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(1328, 631.5)
+shape = SubResource("RectangleShape2D_nn5ht")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

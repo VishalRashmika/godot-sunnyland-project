@@ -1,0 +1,53 @@
+[gd_scene load_steps=3 format=3 uid="uid://ctf17g5a2mbpd"]
+
+[ext_resource type="Texture2D" uid="uid://cgdwyxmd0in5m" path="res://Resources/Sunny-land-files/Sunny-land-assets-files/PNG/environment/layers/back.png" id="1_jpnkk"]
+[ext_resource type="Texture2D" uid="uid://ctrscg5spci1y" path="res://Resources/Sunny-land-files/Sunny-land-assets-files/PNG/environment/layers/middle.png" id="2_fogun"]
+
+[node name="Bgforlevels" type="ParallaxBackground"]
+
+[node name="sea" type="ParallaxLayer" parent="."]
+motion_mirroring = Vector2(1152, 0)
+
+[node name="Back" type="Sprite2D" parent="sea"]
+position = Vector2(576, 324.5)
+scale = Vector2(3, 2.69583)
+texture = ExtResource("1_jpnkk")
+metadata/_edit_lock_ = true
+
+[node name="fg" type="ParallaxLayer" parent="."]
+motion_mirroring = Vector2(1232, 0)
+
+[node name="Middle" type="Sprite2D" parent="fg"]
+position = Vector2(88, 552)
+texture = ExtResource("2_fogun")
+metadata/_edit_lock_ = true
+
+[node name="Middle2" type="Sprite2D" parent="fg"]
+position = Vector2(264, 552)
+texture = ExtResource("2_fogun")
+metadata/_edit_lock_ = true
+
+[node name="Middle3" type="Sprite2D" parent="fg"]
+position = Vector2(440, 552)
+texture = ExtResource("2_fogun")
+metadata/_edit_lock_ = true
+
+[node name="Middle4" type="Sprite2D" parent="fg"]
+position = Vector2(616, 552)
+texture = ExtResource("2_fogun")
+metadata/_edit_lock_ = true
+
+[node name="Middle5" type="Sprite2D" parent="fg"]
+position = Vector2(792, 552)
+texture = ExtResource("2_fogun")
+metadata/_edit_lock_ = true
+
+[node name="Middle6" type="Sprite2D" parent="fg"]
+position = Vector2(968, 552)
+texture = ExtResource("2_fogun")
+metadata/_edit_lock_ = true
+
+[node name="Middle7" type="Sprite2D" parent="fg"]
+position = Vector2(1144, 552)
+texture = ExtResource("2_fogun")
+metadata/_edit_lock_ = true

@@ -1,0 +1,40 @@
+[gd_scene load_steps=4 format=3 uid="uid://bec85ulnopf4i"]
+
+[ext_resource type="Texture2D" uid="uid://6qk56d0s5xpx" path="res://Resources/sunny-land-phaser-project/sunny-land/assets/sprites/title-screen.png" id="1_bj8gq"]
+[ext_resource type="Script" path="res://title_screen.gd" id="1_cymhp"]
+[ext_resource type="PackedScene" uid="uid://bqer2pd3h473s" path="res://back_ground.tscn" id="3_02lx1"]
+
+[node name="TitleScreen" type="Node2D"]
+script = ExtResource("1_cymhp")
+
+[node name="PlayButton" type="Button" parent="."]
+offset_left = 448.0
+offset_top = 256.0
+offset_right = 704.0
+offset_bottom = 384.0
+theme_override_colors/font_color = Color(0.980392, 0.372549, 0.14902, 1)
+theme_override_colors/font_pressed_color = Color(0, 1, 0, 1)
+theme_override_colors/font_hover_color = Color(1, 0, 0, 1)
+theme_override_font_sizes/font_size = 75
+text = "Play"
+
+[node name="ExitButton" type="Button" parent="."]
+offset_left = 448.0
+offset_top = 448.0
+offset_right = 704.0
+offset_bottom = 576.0
+theme_override_colors/font_color = Color(0.980392, 0.372549, 0.14902, 1)
+theme_override_colors/font_pressed_color = Color(0, 1, 0, 1)
+theme_override_colors/font_hover_color = Color(1, 0, 0, 1)
+theme_override_font_sizes/font_size = 75
+text = "Quit"
+
+[node name="logo" type="Sprite2D" parent="."]
+position = Vector2(576, 104)
+scale = Vector2(3, 3)
+texture = ExtResource("1_bj8gq")
+
+[node name="BackGround" parent="." instance=ExtResource("3_02lx1")]
+
+[connection signal="pressed" from="PlayButton" to="." method="_on_play_button_pressed"]
+[connection signal="pressed" from="ExitButton" to="." method="_on_exit_button_pressed"]

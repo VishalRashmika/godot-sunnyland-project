@@ -1,0 +1,276 @@
+[gd_scene load_steps=25 format=3 uid="uid://b5arrdvauhqet"]
+
+[ext_resource type="PackedScene" uid="uid://diqqoj334jocx" path="res://tile_map.tscn" id="1_d4nhs"]
+[ext_resource type="Texture2D" uid="uid://cgdwyxmd0in5m" path="res://Resources/Sunny-land-files/Sunny-land-assets-files/PNG/environment/layers/back.png" id="1_mi1qy"]
+[ext_resource type="Texture2D" uid="uid://df1q6r6vme4dt" path="res://Resources/Props PNG/tree-house.png" id="1_q2ja5"]
+[ext_resource type="PackedScene" uid="uid://bispqngqs8hxl" path="res://player.tscn" id="2_g80gj"]
+[ext_resource type="Script" path="res://ParallaxBackground.gd" id="3_gqrrt"]
+[ext_resource type="Texture2D" uid="uid://ctrscg5spci1y" path="res://Resources/Sunny-land-files/Sunny-land-assets-files/PNG/environment/layers/middle.png" id="6_3qiep"]
+[ext_resource type="Texture2D" uid="uid://7rinsm6h3jmj" path="res://Resources/Sunny-land-files/Sunny-land-assets-files/PNG/environment/props/house.png" id="8_cxaiy"]
+[ext_resource type="Texture2D" uid="uid://b23774ie578un" path="res://Resources/Sunny-land-files/Sunny-land-assets-files/PNG/environment/props/door.png" id="9_pby0y"]
+[ext_resource type="Texture2D" uid="uid://bc4sel2dc6uf7" path="res://Resources/Sunny-land-files/Sunny-land-assets-files/PNG/environment/props/sign.png" id="10_aqe7r"]
+[ext_resource type="Texture2D" uid="uid://dlpx7wbyqi4gu" path="res://Resources/Sunny-land-files/Sunny-land-assets-files/PNG/environment/props/shrooms.png" id="11_pxst4"]
+[ext_resource type="Texture2D" uid="uid://c3c1dyxdik3o5" path="res://Resources/Sunny-land-files/Sunny-land-assets-files/PNG/environment/props/spikes-top.png" id="12_paxn5"]
+[ext_resource type="Texture2D" uid="uid://dyhns3oh3fx5w" path="res://Resources/Sunny-land-files/Sunny-land-assets-files/PNG/environment/props/tree.png" id="13_e42m6"]
+[ext_resource type="Texture2D" uid="uid://bi2ndylju6w01" path="res://Resources/Sunny-land-files/Sunny-land-assets-files/PNG/environment/props/crate.png" id="14_ururg"]
+[ext_resource type="Texture2D" uid="uid://b2w7fk3gmquek" path="res://Resources/Sunny-land-files/Sunny-land-assets-files/PNG/environment/props/big-crate.png" id="15_3127y"]
+[ext_resource type="Texture2D" uid="uid://r0fkq63wdsfn" path="res://Resources/Sunny-land-files/Sunny-land-assets-files/PNG/environment/props/face-block.png" id="16_52c7w"]
+[ext_resource type="Texture2D" uid="uid://byefhdvvprven" path="res://Resources/Sunny-land-files/Sunny-land-assets-files/PNG/environment/props/bush.png" id="17_ikyih"]
+[ext_resource type="PackedScene" uid="uid://cgyntj4iqgpco" path="res://frog.tscn" id="18_xsvsx"]
+[ext_resource type="PackedScene" uid="uid://bc3q00nayqa13" path="res://countess_vampire.tscn" id="19_300ae"]
+[ext_resource type="PackedScene" uid="uid://c308m06swu7cf" path="res://Collectibles/diamond.tscn" id="20_78n6a"]
+[ext_resource type="PackedScene" uid="uid://ca366hvgthxw8" path="res://Collectibles/cherry.tscn" id="21_0fc0v"]
+[ext_resource type="PackedScene" uid="uid://cqco21enwhf3h" path="res://Collectibles/chest.tscn" id="22_e4viq"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ws5nu"]
+size = Vector2(88, 4)
+
+[sub_resource type="GDScript" id="GDScript_xlv5w"]
+script/source = "extends Label
+
+
+# Called when the node enters the scene tree for the first time.
+func _ready():
+	pass # Replace with function body.
+
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(delta):
+	text = \"HP: \" + str(Globalgamescript.player_health)
+"
+
+[sub_resource type="GDScript" id="GDScript_t0vy7"]
+script/source = "extends Label
+
+
+# Called when the node enters the scene tree for the first time.
+func _ready():
+	pass # Replace with function body.
+
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(delta):
+	text = \"Score: \" + str(Globalgamescript.game_score)
+
+"
+
+[node name="World" type="Node2D"]
+
+[node name="TileMap" parent="." instance=ExtResource("1_d4nhs")]
+metadata/_edit_lock_ = true
+
+[node name="ParallaxBackground" type="ParallaxBackground" parent="."]
+script = ExtResource("3_gqrrt")
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_mirroring = Vector2(1200, 0)
+
+[node name="BgImage" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer"]
+position = Vector2(600, 328)
+scale = Vector2(3.125, 2.73333)
+texture = ExtResource("1_mi1qy")
+metadata/_edit_lock_ = true
+
+[node name="ParallaxLayer2" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_mirroring = Vector2(1232, 0)
+
+[node name="Middle" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer2"]
+position = Vector2(88, 552.5)
+scale = Vector2(1, 1.0462)
+texture = ExtResource("6_3qiep")
+metadata/_edit_lock_ = true
+
+[node name="Middle2" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer2"]
+position = Vector2(264, 548)
+scale = Vector2(1, 1.02174)
+texture = ExtResource("6_3qiep")
+metadata/_edit_lock_ = true
+
+[node name="Middle3" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer2"]
+position = Vector2(440, 544)
+texture = ExtResource("6_3qiep")
+metadata/_edit_lock_ = true
+
+[node name="Middle4" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer2"]
+position = Vector2(616, 544)
+texture = ExtResource("6_3qiep")
+metadata/_edit_lock_ = true
+
+[node name="Middle5" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer2"]
+position = Vector2(792, 544)
+texture = ExtResource("6_3qiep")
+metadata/_edit_lock_ = true
+
+[node name="Middle6" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer2"]
+position = Vector2(968, 585)
+scale = Vector2(1, 1.22283)
+texture = ExtResource("6_3qiep")
+metadata/_edit_lock_ = true
+
+[node name="Middle7" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer2"]
+position = Vector2(1144, 586.5)
+scale = Vector2(1, 1.23098)
+texture = ExtResource("6_3qiep")
+metadata/_edit_lock_ = true
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(24, 423)
+shape = SubResource("RectangleShape2D_ws5nu")
+
+[node name="FGObjectsBehind" type="Node2D" parent="."]
+
+[node name="Tree-house" type="Sprite2D" parent="FGObjectsBehind"]
+position = Vector2(25, 392)
+texture = ExtResource("1_q2ja5")
+
+[node name="House" type="Sprite2D" parent="FGObjectsBehind"]
+position = Vector2(1931, 346)
+texture = ExtResource("8_cxaiy")
+
+[node name="Door" type="Sprite2D" parent="FGObjectsBehind"]
+position = Vector2(640, 496)
+texture = ExtResource("9_pby0y")
+
+[node name="Sign" type="Sprite2D" parent="FGObjectsBehind"]
+position = Vector2(615, 502)
+texture = ExtResource("10_aqe7r")
+
+[node name="Shrooms" type="Sprite2D" parent="FGObjectsBehind"]
+position = Vector2(408, 456.75)
+scale = Vector2(1, 0.966667)
+texture = ExtResource("11_pxst4")
+
+[node name="Shrooms2" type="Sprite2D" parent="FGObjectsBehind"]
+position = Vector2(551, 505)
+scale = Vector2(1, 0.966667)
+texture = ExtResource("11_pxst4")
+
+[node name="Spikes-top" type="Sprite2D" parent="FGObjectsBehind"]
+position = Vector2(393, 339)
+texture = ExtResource("12_paxn5")
+
+[node name="Spikes-top2" type="Sprite2D" parent="FGObjectsBehind"]
+position = Vector2(408, 339)
+texture = ExtResource("12_paxn5")
+
+[node name="Spikes-top3" type="Sprite2D" parent="FGObjectsBehind"]
+position = Vector2(422, 339)
+texture = ExtResource("12_paxn5")
+
+[node name="Tree" type="Sprite2D" parent="FGObjectsBehind"]
+position = Vector2(1018, 417)
+texture = ExtResource("13_e42m6")
+
+[node name="Crate" type="Sprite2D" parent="FGObjectsBehind"]
+position = Vector2(388, 456)
+texture = ExtResource("14_ururg")
+
+[node name="Big-crate" type="Sprite2D" parent="FGObjectsBehind"]
+position = Vector2(238, 721)
+texture = ExtResource("15_3127y")
+
+[node name="Face-block" type="Sprite2D" parent="FGObjectsBehind"]
+position = Vector2(1263, 430)
+texture = ExtResource("16_52c7w")
+
+[node name="Tree2" type="Sprite2D" parent="FGObjectsBehind"]
+position = Vector2(2025, 353)
+texture = ExtResource("13_e42m6")
+
+[node name="Bush" type="Sprite2D" parent="FGObjectsBehind"]
+position = Vector2(1877, 386)
+texture = ExtResource("17_ikyih")
+
+[node name="Bush2" type="Sprite2D" parent="FGObjectsBehind"]
+position = Vector2(1988, 386)
+texture = ExtResource("17_ikyih")
+
+[node name="Door2" type="Sprite2D" parent="FGObjectsBehind"]
+position = Vector2(1928, 623.25)
+scale = Vector2(1, 1.01515)
+texture = ExtResource("9_pby0y")
+
+[node name="Tree3" type="Sprite2D" parent="FGObjectsBehind"]
+position = Vector2(2355, 401)
+texture = ExtResource("13_e42m6")
+
+[node name="Bush3" type="Sprite2D" parent="FGObjectsBehind"]
+position = Vector2(2382, 434)
+texture = ExtResource("17_ikyih")
+
+[node name="CollectiblesBehind" type="Node2D" parent="."]
+
+[node name="chest" parent="CollectiblesBehind" instance=ExtResource("22_e4viq")]
+position = Vector2(104, 456)
+
+[node name="Mobs" type="Node2D" parent="."]
+
+[node name="Frog" parent="Mobs" instance=ExtResource("18_xsvsx")]
+position = Vector2(952, 440)
+
+[node name="Frog2" parent="Mobs" instance=ExtResource("18_xsvsx")]
+position = Vector2(1000, 439)
+
+[node name="Frog3" parent="Mobs" instance=ExtResource("18_xsvsx")]
+position = Vector2(1201, 371)
+
+[node name="Frog4" parent="Mobs" instance=ExtResource("18_xsvsx")]
+position = Vector2(1322, 357)
+
+[node name="Frog5" parent="Mobs" instance=ExtResource("18_xsvsx")]
+position = Vector2(1329, 447)
+
+[node name="Frog6" parent="Mobs" instance=ExtResource("18_xsvsx")]
+position = Vector2(1432, 414)
+
+[node name="Frog7" parent="Mobs" instance=ExtResource("18_xsvsx")]
+position = Vector2(1761, 376)
+
+[node name="Frog8" parent="Mobs" instance=ExtResource("18_xsvsx")]
+position = Vector2(1577, 395)
+
+[node name="Frog9" parent="Mobs" instance=ExtResource("18_xsvsx")]
+position = Vector2(2088, 375)
+
+[node name="Frog10" parent="Mobs" instance=ExtResource("18_xsvsx")]
+position = Vector2(2296, 405)
+
+[node name="CountessVampire" parent="Mobs" instance=ExtResource("19_300ae")]
+position = Vector2(440, 416)
+scale = Vector2(1.5, 1.5)
+
+[node name="Player" parent="." instance=ExtResource("2_g80gj")]
+position = Vector2(16, 408)
+
+[node name="FGObjectsinfront" type="Node2D" parent="."]
+
+[node name="UI" type="CanvasLayer" parent="."]
+
+[node name="Health" type="Label" parent="UI"]
+offset_left = 5.0
+offset_top = 5.0
+offset_right = 118.0
+offset_bottom = 54.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0.937255, 0.929412, 0.952941, 1)
+theme_override_font_sizes/font_size = 35
+script = SubResource("GDScript_xlv5w")
+
+[node name="Score" type="Label" parent="UI"]
+offset_left = 7.0
+offset_top = 56.0
+offset_right = 167.0
+offset_bottom = 105.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 35
+script = SubResource("GDScript_t0vy7")
+
+[node name="CollectiblesInfront" type="Node2D" parent="."]
+
+[node name="Diamond" parent="CollectiblesInfront" instance=ExtResource("20_78n6a")]
+position = Vector2(240, 448)
+
+[node name="Cherry" parent="CollectiblesInfront" instance=ExtResource("21_0fc0v")]
+position = Vector2(344, 456)

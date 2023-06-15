@@ -1,0 +1,88 @@
+[gd_scene load_steps=10 format=3 uid="uid://c308m06swu7cf"]
+
+[ext_resource type="Texture2D" uid="uid://sflhnnoe5klt" path="res://Resources/Sunny-land-files/Sunny-land-assets-files/PNG/spritesheets/gem.png" id="1_3rf8a"]
+
+[sub_resource type="GDScript" id="GDScript_yped7"]
+resource_name = "diamond"
+script/source = "extends Area2D
+
+func _ready():
+	get_node(\"AnimatedSprite2D\").play(\"Shining_anim\")
+	
+
+var diamond_active = true
+
+func _on_body_entered(body):
+	if body.name == \"Player\" and diamond_active:
+		#Game.Gold += 5
+		diamond_active = false
+		Globalgamescript.game_score += 10
+		#print(\"Diamond\")
+		var tween = get_tree().create_tween()
+		var tween1 = get_tree().create_tween()		
+		tween.tween_property(self, \"position\", position - Vector2(0,25), 0.3)
+		tween1.tween_property(self, \"modulate:a\", 0, 0.3)
+		
+		tween.tween_callback(queue_free)
+		
+"
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_d3uyb"]
+radius = 16.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7xdup"]
+atlas = ExtResource("1_3rf8a")
+region = Rect2(0, 0, 15, 13)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_b0ph4"]
+atlas = ExtResource("1_3rf8a")
+region = Rect2(15, 0, 15, 13)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2im7q"]
+atlas = ExtResource("1_3rf8a")
+region = Rect2(30, 0, 15, 13)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7rixm"]
+atlas = ExtResource("1_3rf8a")
+region = Rect2(45, 0, 15, 13)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pn12h"]
+atlas = ExtResource("1_3rf8a")
+region = Rect2(60, 0, 15, 13)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_b5cm1"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7xdup")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_b0ph4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2im7q")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7rixm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pn12h")
+}],
+"loop": true,
+"name": &"Shining_anim",
+"speed": 5.0
+}]
+
+[node name="Diamond" type="Area2D"]
+script = SubResource("GDScript_yped7")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_d3uyb")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(1.90735e-06, 9.53674e-07)
+scale = Vector2(2.34615, 2.34615)
+sprite_frames = SubResource("SpriteFrames_b5cm1")
+animation = &"Shining_anim"
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
