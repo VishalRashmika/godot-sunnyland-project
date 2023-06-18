@@ -1,0 +1,25 @@
+[gd_scene load_steps=2 format=3 uid="uid://cgytkglrj27pa"]
+
+[sub_resource type="GDScript" id="GDScript_t0vy7"]
+script/source = "extends Label
+
+
+# Called when the node enters the scene tree for the first time.
+func _ready():
+	pass # Replace with function body.
+
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(delta):
+	text = \"Score: \" + str(Globalgamescript.game_score)
+
+"
+
+[node name="Score" type="Label"]
+offset_left = 7.0
+offset_top = 56.0
+offset_right = 167.0
+offset_bottom = 105.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 35
+script = SubResource("GDScript_t0vy7")
